@@ -2,6 +2,8 @@ package practice;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
+import java.util.TreeMap;
 
 public class Test {
 	public static void main(String[] args) {
@@ -17,9 +19,6 @@ public class Test {
 		System.out.println(menu.remove("steak"));
 		System.out.println(menu.remove(0));
 		System.out.println(menu);
-		HashMap<String, String> map = new HashMap<String, String>();
-		map.put("steak", "meat");
-		map.put("macnuget", "chicken");
-		System.out.println(map.get("steak"));
+		String[] names = new String[24];
 	}
 }
