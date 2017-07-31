@@ -13,7 +13,7 @@ public class GenericList<侩林> {
 		current = -1;
 	}
 
-	public void add(Object exam) {
+	public void add(侩林 exam) {
 
 		if (index >= capacity) {
 			侩林[] temp =  (侩林[]) new Object[capacity + 2];
@@ -24,7 +24,7 @@ public class GenericList<侩林> {
 			capacity += 2;
 		}
 
-		list[index++] = (侩林) exam;
+		list[index++] = exam;
 	}
 
 	public 侩林 get(int i) {
