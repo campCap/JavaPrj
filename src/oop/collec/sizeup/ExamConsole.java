@@ -2,13 +2,18 @@ package oop.collec.sizeup;
 
 import java.util.Scanner;
 
+import oop.collec.Exam;
+
 public class ExamConsole {
 
 	private Exam[] exams;
 	private int index;
 
+	private int capacity;
+
 	public ExamConsole() {
 		exams = new Exam[3];
+		capacity = 3;
 
 		for (int i = 0; i < 3; i++)
 			exams[i] = new Exam();
@@ -37,25 +42,32 @@ public class ExamConsole {
 		System.out.println("│    │ 언어 │ 국사 │ 외국어 │");
 		System.out.println("└────┴──────┴──────┴────────┘");
 
-		for (int i = 0; i < 3; i++) {
-			do {
-				if (kor < 0 || kor > 100 || soc < 0 || soc > 100 || eng < 0 || eng > 100)
-					System.out.println("0부터 100사이의 점수를 입력해주세요-_-");
-				System.out.print(" 성적  입력   : ");
-				kor = scan.nextInt();
-				soc = scan.nextInt();
-				eng = scan.nextInt();
-			} while (kor < 0 || kor > 100 || soc < 0 || soc > 100 || eng < 0 || eng > 100);
-			System.out.println("----------------------------");
+		do {
+			if (kor < 0 || kor > 100 || soc < 0 || soc > 100 || eng < 0 || eng > 100)
+				System.out.println("0부터 100사이의 점수를 입력해주세요-_-");
+			System.out.print(" 성적  입력   : ");
+			kor = scan.nextInt();
+			soc = scan.nextInt();
+			eng = scan.nextInt();
+		} while (kor < 0 || kor > 100 || soc < 0 || soc > 100 || eng < 0 || eng > 100);
+		System.out.println("----------------------------");
 
-			Exam exam = new Exam();
+		Exam exam = new Exam();
 
-			exam.setKor(kor);
-			exam.setEng(eng);
-			exam.setSoc(soc);
-			exams[index++] = exam;
+		exam.setKor(kor);
+		exam.setEng(eng);
+		exam.setSoc(soc);
+
+		if (index >= capacity) {
+			Exam[] temp = new Exam[capacity + 2];
+			for (int i = 0; i < exams.length; i++) {
+				temp[i] = exams[i];
+			}
+			exams = temp;
 		}
-		
+
+		exams[index++] = exam;
+
 	}
 
 	public void print() {

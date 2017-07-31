@@ -1,17 +1,14 @@
-package oop.collec;
+package oop.collec.col;
 
 import java.util.Scanner;
 
+import oop.collec.Exam;
+
 public class ExamConsole {
 
-	private Exam[] exams;
-	private int index;
+	private ExamList exams;
 
 	public ExamConsole() {
-		exams = new Exam[3];
-
-		for (int i = 0; i < 3; i++)
-			exams[i] = new Exam();
 	}
 
 	public int inputMenu() {
@@ -52,31 +49,24 @@ public class ExamConsole {
 		exam.setKor(kor);
 		exam.setEng(eng);
 		exam.setSoc(soc);
-		
-		int capacity = index;
-		if (index >= capacity) {
-			Exam[] temp = new Exam[capacity+2];
-			for (int i = 0; i < exams.length; i++) {
-				temp[i] = exams[i];
-			}
-			exams = temp;
-		}
 
-		exams[index++] = exam;
+		exams.add(exam);
 
 	}
 
 	public void print() {
-		System.out.println("忙式式式式式式式式式式式式式式式式式式式式式式式式式式式忖");
-		System.out.println("弛      裊勒 衛я唸婁 	    弛");
-		System.out.println("戌式式式式式式式式式式式式式式式式式式式式式式式式式式式戎");
 		Exam exam = new Exam();
-		for (int i = 0; i < index; i++) {
-			exam = exams[i];
+		
+		for (int i = 0; i <exams.size(); i++) {
+			exam = exams.get(i);
+			
 			double total, avg;
 			total = exam.total();
 			avg = exam.avg();
 
+			System.out.println("忙式式式式式式式式式式式式式式式式式式式式式式式式式式式忖");
+			System.out.println("弛      裊勒 衛я唸婁 	    弛");
+			System.out.println("戌式式式式式式式式式式式式式式式式式式式式式式式式式式式戎");
 
 			int kor = exam.getKor();
 			int eng = exam.getEng();
