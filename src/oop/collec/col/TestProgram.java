@@ -1,26 +1,27 @@
 package oop.collec.col;
 
-import java.util.ArrayList;
+import oop.collec.col.GenericList.GIterator;
 
 public class TestProgram {
 
 	public static void main(String[] args) {
 		GenericList<String> list = new GenericList<String>();
-		ArrayList<String> list2 = new ArrayList<String>();
-		list.add("fuck it");
 		
+		list.add("fuck it");
 		list.add("bye");
 		list.add("hello");
 		list.add("int i");
-		list.add("int i");
-		list.add("int i");
-		list.add("int i");
-		list.add("int i");
-		list.add("int i");
-		list.add("int i");
+		list.add("int k");
+		list.add("int j");
+		list.add("int a");
+		list.add("int b");
+		list.add("int n");
+		list.add("int z");
 		
-		while(list.hasNext()) {
-			System.out.println(list.next());
+		GIterator lter = list.iterator();
+		
+		while(lter.hasNext()) {
+			System.out.println(lter.next());
 		}
 			
 	}

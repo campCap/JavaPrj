@@ -1,24 +1,40 @@
 package practice;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.TreeMap;
 
-public class Test {
+public class Test extends Thread {
+
+	int seq;
+
+	public Test(int seq) {
+		this.seq = seq;
+	}
+
+	public void run() {
+		System.out.println(seq + "thread start.");
+		try {
+			Thread.sleep(1000);
+		} catch (Exception e) {
+
+		}
+		System.out.println(seq + "thread end");
+	}
+
 	public static void main(String[] args) {
+		ArrayList<Thread> threads = new ArrayList<Thread>();
+		for (int i = 0; i < 10; i++) {
+			Thread t = new Test(i);
+			t.start();
+			threads.add(t);
+		}
 
-		ArrayList<String> menu = new ArrayList<String>();
-		menu.add(0, "steak");
-		menu.add(1, "french fries");
-		menu.add(2, "chicken");
-		menu.add(3, "beef steak");
-		System.out.println(menu);
-		System.out.println(menu.contains("steak"));
-		System.out.println(menu.size());
-		System.out.println(menu.remove("steak"));
-		System.out.println(menu.remove(0));
-		System.out.println(menu);
-		String[] names = new String[24];
+		for (int i = 0; i < threads.size(); i++) {
+			Thread t = threads.get(i);
+			try {
+				t.join();
+			} catch (Exception e) {
+			}
+		}
+		System.out.println("main end");
 	}
 }

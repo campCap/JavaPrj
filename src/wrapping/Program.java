@@ -7,15 +7,15 @@ public class Program {
 	public static void main(String[] args) {
 		int a = "Hello".length();
 		int i = new String("dosen't work").length();
-		String s = "abc" + 'j';
+		String s = "abc" + "j";
 		System.out.println(s);
-		String n = "3";
+		String n = "try";
 		// String str = Integer.toString(n);
 		String str = String.valueOf(n);
 		double d = 3.4;
 
-		double b = Double.parseDouble(str);
-		int k = Integer.parseInt(n);
+		//double b = Double.parseDouble(str);
+		//int k = Integer.parseInt(n);
 		String name1 = "ak-47";
 
 		String name2 = "ak-47";
