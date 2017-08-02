@@ -1,13 +1,11 @@
 package oop.collec.col;
 
 
-import oop.collec.col.GenericList.GIterator;
-
 public class AsyncProgram {
 
 	public static void main(String[] args) {
 
-		GenericList<Integer> list = new GenericList<>();
+		GenericList<Integer> list = new GenericList<Integer>();
 
 		for (int i = 0; i < 123; i++)
 			list.add(i + 1);
@@ -34,13 +32,15 @@ public class AsyncProgram {
 
 	private static void download(GenericList<Integer> list, int num) {
 		/*
-		 * for (int i = 0; i < 100; i++) System.out.printf("%d : %d%%\n", num,
+		 * for (int i = 0; i < list.; i++) System.out.printf("%d : %d%%\n", num,
 		 * list.get(i));
 		 */
-		GIterator iter = list.iterator();
-
-		while (iter.hasNext())
-			System.out.printf("%d : %d%%\n", num, iter.next());
+		//Iterator iter = list.iterator();
+		
+		for(Integer n : list)
+			System.out.printf("%d : %d%%\n", num, n);
+		/*while (iter.hasNext())
+			System.out.printf("%d : %d%%\n", num, iter.next());*/
 
 	}
 
