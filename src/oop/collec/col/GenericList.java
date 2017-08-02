@@ -1,7 +1,8 @@
 package oop.collec.col;
 
+import java.util.Iterator;
 
-public class GenericList<용주> {
+public class GenericList<용주> implements Iterable<용주>{
 	private 용주[] list;
 	private int index;
 	private int capacity;
@@ -38,8 +39,7 @@ public class GenericList<용주> {
 	
 	// ==============================================데이터 읽는
 	
-	class GIterator {
-		
+	class GIterator implements Iterator<용주> {
 		
 		private int current;
 
@@ -59,7 +59,7 @@ public class GenericList<용주> {
 		}
 	}
 
-	public GIterator iterator() {
+	public Iterator iterator() {
 		
 		return new GIterator();
 	}
