@@ -1,6 +1,5 @@
 package oop.collec.col;
 
-import java.util.ArrayList;
 
 import oop.collec.col.GenericList.GIterator;
 
