@@ -1,6 +1,5 @@
 package oop.collec.col;
 
-import java.util.ArrayList;
 
 public class AsyncProgram {
 
