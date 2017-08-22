@@ -5,10 +5,15 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Program {
+		private static NoticeService service ;
+		
 	public static void main(String[] args) throws ClassNotFoundException, SQLException {
+		service	= new NoticeService();
 		out: 
 		while (true) {
 
@@ -41,7 +46,8 @@ public class Program {
 	}
 
 	private static void listNotice() throws ClassNotFoundException, SQLException {
-		String url = "jdbc:oracle:thin:@211.238.142.251:1521:orcl";
+		
+		/*String url = "jdbc:oracle:thin:@211.238.142.251:1521:orcl";
 		String sql = "SELECT * FROM NOTICE";
 		// 드라이버 로드
 		Class.forName("oracle.jdbc.OracleDriver");
@@ -51,16 +57,34 @@ public class Program {
 		Statement st = con.createStatement();
 		// 결과가져오기
 		ResultSet rs = st.executeQuery(sql);
-		while (rs.next())
-			System.out.printf("ID : %s   TITLE : %s 	CONTENT : %s\n", rs.getString("ID"), rs.getString("title"),
-					rs.getString("CONTENT"));
-
+		
+		ArrayList<Notice> list = new ArrayList<>();
+		
+		while(rs.next()) {
+			Notice n = new Notice();
+			n.setId(rs.getString("ID"));
+			n.setTitle(rs.getString("TITLE"));
+			n.setContent(rs.getString("CONTENT"));
+			n.setRegDate(rs.getDate("REG_DATE"));
+			n.setHit(rs.getInt("HIT"));
+			list.add(n);
+		}
+		
 		rs.close();
 		st.close();
-		con.close();
+		con.close();*/
+		
+		List<Notice> list = service.getList();
+		
+		//------View-------------------------------------------------------------------
+		
+		for(Notice n : list)
+			System.out.printf("ID : %s   TITLE : %s 	CONTENT : %s	DATE : %s	HIT : %d\n",
+					n.getId(), n.getTitle(), n.getContent(), n.getRegDate(), n.getHit());
+		
 
 	}
-
+		
 	private static void inputNotice() throws ClassNotFoundException, SQLException {
 
 		Scanner scan = new Scanner(System.in);
@@ -72,8 +96,11 @@ public class Program {
 		String content = scan.nextLine();
 		System.out.print("작성자 입력 : ");
 		String writer = scan.nextLine();
+		
 
-		String url = "jdbc:oracle:thin:@211.238.142.251:1521:orcl";
+		service.insert(id, title, content,writer);
+		
+		/*String url = "jdbc:oracle:thin:@211.238.142.251:1521:orcl";
 		String sql = "INSERT INTO NOTICE(ID, TITLE, CONTENT, WRITER_ID, HIT)" + " VALUES('" + id + "','" + title + "','"
 				+ content + "','" + writer + "'," + 0 + ")";
 
@@ -87,7 +114,7 @@ public class Program {
 		st.executeUpdate(sql);
 		st.close();
 		con.close();
-
+*/
 	}
 
 }
